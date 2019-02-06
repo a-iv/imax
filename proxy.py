@@ -168,7 +168,7 @@ def read_config(config_path):
     config = ConfigParser()
     config.read(config_path)
     try:
-        port_string = config.get('serial', 'port_number')
+        port_string = config.get(SERIAL_SECTION, PORT_NUMBER)
     except (NoSectionError, NoOptionError):
         error('Invalid config file %s' % config_path)
         info('You can delete it to create new one')
