@@ -131,11 +131,15 @@ def create_open_format(response_format):
 
 
 def serialize(open_format):
-    payload = ';'.join(
-        ('%g' % value).replace('.', ',')
+    values = [
+        '%g' % value
         for value in open_format
-    )
-    return '$%s\r\n' % payload
+    ]
+    values = [
+        value.replace('.', ',')
+        for value in values
+    ]
+    return '$%s\r\n' % ';'.join(values)
 
 
 def resend(incoming_values, serial_port):
