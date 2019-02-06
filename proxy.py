@@ -14,6 +14,10 @@ SERIAL_SECTION = 'serial'
 PORT_NUMBER = 'port_number'
 INVALID_PORT_FORMAT = 'Please specify port number to be used inside %s'
 
+Config = namedtuple('Config', (
+    'port_name',
+))
+
 QUERY_INTERVAL_IN_SECONDS = 1
 
 VENDOR_ID = 0
@@ -170,18 +174,20 @@ def get_port_number(config_path):
         info('You can delete it to create new one')
         raise
     try:
-        return int(port_string)
+        port_number = int(port_string)
     except ValueError:
         error(INVALID_PORT_FORMAT % config_path)
         raise
+    return Config(
+        port_name='COM%d' % port_number,
+    )
 
 
 def get_port_name():
     path = get_config_path()
     if not exists(path):
         create_dummy_config(path)
-    port_number = get_port_number(path)
-    return 'COM%d' % port_number
+    return get_port_number(path)
 
 
 def setup_logger():
@@ -201,9 +207,9 @@ def setup_logger():
 def run():
     setup_logger()
 
-    port_name = get_port_name()
+    config = get_port_name()
     hid_device = None
-    serial_port = Serial(port_name)
+    serial_port = Serial(config.port_name)
 
     next_start = time()
     while True:
