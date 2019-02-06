@@ -1,0 +1,415 @@
+object TChart
+  Left = 0
+  Top = 0
+  Width = 1122
+  Height = 438
+  BackWall.Color = 15138815
+  BackWall.Transparent = False
+  Legend.Visible = False
+  MarginLeft = 154
+  MarginRight = 51
+  MarginUnits = muPixels
+  ScrollMouseButton = mbMiddle
+  Title.Visible = False
+  OnClickAxis = MainChartClickAxis
+  OnScroll = MainChartScroll
+  OnUndoZoom = MainChartUndoZoom
+  OnZoom = MainChartZoom
+  BottomAxis.Axis.Width = 1
+  BottomAxis.Increment = 1.000000000000000000
+  BottomAxis.MaximumOffset = 1
+  BottomAxis.MinimumOffset = 1
+  DepthAxis.Automatic = False
+  DepthAxis.AutomaticMaximum = False
+  DepthAxis.AutomaticMinimum = False
+  DepthAxis.Maximum = -0.500000000000000000
+  DepthAxis.Minimum = -0.500000000000000000
+  DepthTopAxis.Automatic = False
+  DepthTopAxis.AutomaticMaximum = False
+  DepthTopAxis.AutomaticMinimum = False
+  DepthTopAxis.Maximum = -0.500000000000000000
+  DepthTopAxis.Minimum = -0.500000000000000000
+  CustomAxes = <
+    item
+      Axis.Color = clBlue
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage [V]'
+    end
+    item
+      Automatic = False
+      AutomaticMinimum = False
+      Axis.Color = clRed
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Current [A]'
+    end
+    item
+      Axis.Color = clLime
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionPercent = -57.000000000000000000
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Charge [mAh]'
+    end
+    item
+      Axis.Color = clYellow
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionPercent = -57.000000000000000000
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Power [W]'
+      Title.Visible = False
+      Visible = False
+    end
+    item
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionPercent = -113.000000000000000000
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'ext. Temperature ['#176'C]'
+    end
+    item
+      Axis.Color = clAqua
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'int. Temperature ['#176'C]'
+      Visible = False
+    end
+    item
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      MinimumOffset = 1
+      PositionPercent = -164.000000000000000000
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #1 [V]'
+      Visible = False
+    end
+    item
+      Axis.Color = 13369344
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #2 [V]'
+      Visible = False
+    end
+    item
+      Axis.Color = 52224
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #3 [V]'
+      Visible = False
+    end
+    item
+      Axis.Color = 52428
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #4 [V]'
+      Visible = False
+    end
+    item
+      Axis.Color = 13369548
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = False
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #5 [V]'
+      Visible = False
+    end
+    item
+      Axis.Color = 13421568
+      Grid.Visible = False
+      Increment = 0.001000000000000000
+      Horizontal = False
+      OtherSide = True
+      MaximumOffset = 5
+      PositionUnits = muPixels
+      Title.Angle = 90
+      Title.Caption = 'Voltage Cell #6 [V]'
+      Visible = False
+    end>
+  LeftAxis.Automatic = False
+  LeftAxis.AutomaticMaximum = False
+  LeftAxis.AutomaticMinimum = False
+  RightAxis.Automatic = False
+  RightAxis.AutomaticMaximum = False
+  RightAxis.AutomaticMinimum = False
+  View3D = False
+  Zoom.Pen.Color = clBlue
+  Zoom.Pen.Width = 3
+  OnGetAxisLabel = MainChartGetAxisLabel
+  Align = alClient
+  Color = clWhite
+  PopupMenu = DummyPopup
+  TabOrder = 0
+  OnMouseDown = MainChartMouseDown
+  OnMouseUp = MainChartMouseUp
+  OnResize = MainChartResize
+  OnMouseWheel = MainChartMouseWheel
+  ExplicitWidth = 672
+  ExplicitHeight = 411
+  ColorPaletteIndex = 13
+  object TFastLineSeries
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clBlue
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 0
+  end
+  object TFastLineSeries
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Current'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clRed
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 1
+  end
+  object TFastLineSeries
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Charge'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clLime
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 2
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Power'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clYellow
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 3
+  end
+  object TFastLineSeries
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'ext. Temperature'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clFuchsia
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 4
+  end
+  object TFastLineSeries
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'int. Temperature'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = clAqua
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 4
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #1'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 204
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #2'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 13369344
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #3'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 52224
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #4'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 52428
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #5'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 13369548
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TFastLineSeries
+    Active = False
+    Marks.Arrow.Visible = True
+    Marks.Callout.Brush.Color = clBlack
+    Marks.Callout.Arrow.Visible = True
+    Marks.Visible = False
+    Title = 'Voltage Cell #6'
+    VertAxis = aCustomVertAxis
+    LinePen.Color = 13421568
+    XValues.Name = 'X'
+    XValues.Order = loNone
+    YValues.Name = 'Y'
+    YValues.Order = loNone
+    CustomVertAxis = 6
+  end
+  object TCursorTool
+    Tag = 10000
+    Active = False
+    SnapStyle = ssVertical
+  end
+  object TCursorTool
+    Tag = 10001
+    Active = False
+    Pen.Color = clBlue
+    SnapStyle = ssVertical
+  end
+  object TDrawLineTool
+    Tag = 10002
+    Active = False
+    EnableDraw = False
+    EnableSelect = False
+    Lines = <
+      item
+        X1 = 10.000000000000000000
+        Y1 = 10.000000000000000000
+      end>
+    SelectNewLines = False
+  end
+  object TAnnotationTool
+    Tag = 10003
+    Active = False
+    Callout.Brush.Color = clBlack
+    Callout.Arrow.Visible = False
+    Shape.CustomPosition = True
+    Shape.Frame.Visible = False
+    Shape.Left = 0
+    Shape.Shadow.Visible = False
+    Shape.Top = 0
+    Shape.Transparent = True
+  end
+end
