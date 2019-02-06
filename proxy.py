@@ -13,9 +13,12 @@ from time import sleep, time
 SERIAL_SECTION = 'serial'
 PORT_NUMBER = 'port_number'
 INVALID_PORT_FORMAT = 'Please specify port number to be used inside %s'
+LOG_VIEW_SECTION = 'log_view'
+USE_STUDIO = 'use_studio'
 
 Config = namedtuple('Config', (
     'port_name',
+    'use_studio',
 ))
 
 QUERY_INTERVAL_IN_SECONDS = 1
@@ -130,22 +133,23 @@ def create_open_format(response_format):
     )
 
 
-def serialize(open_format):
+def serialize(open_format, use_studio):
     values = [
         '%g' % value
         for value in open_format
     ]
-    values = [
-        value.replace('.', ',')
-        for value in values
-    ]
+    if not use_studio:
+        values = [
+            value.replace('.', ',')
+            for value in values
+        ]
     return '$%s\r\n' % ';'.join(values)
 
 
-def resend(incoming_values, serial_port):
+def resend(incoming_values, serial_port, use_studio):
     response_format = parse(incoming_values)
     open_format = create_open_format(response_format)
-    output_data = serialize(open_format)
+    output_data = serialize(open_format, use_studio)
     serial_port.write(output_data)
 
 
@@ -164,6 +168,8 @@ def create_dummy_config(config_path):
     config = ConfigParser()
     config.add_section(SERIAL_SECTION)
     config.set(SERIAL_SECTION, PORT_NUMBER, '')
+    config.add_section(LOG_VIEW_SECTION)
+    config.set(LOG_VIEW_SECTION, USE_STUDIO, False)
     with open(config_path, 'w') as output:
         config.write(output)
 
@@ -173,7 +179,8 @@ def read_config(config_path):
     config.read(config_path)
     try:
         port_string = config.get(SERIAL_SECTION, PORT_NUMBER)
-    except (NoSectionError, NoOptionError):
+        use_studio = config.getboolean(LOG_VIEW_SECTION, USE_STUDIO)
+    except (NoSectionError, NoOptionError, ValueError):
         error('Invalid config file %s' % config_path)
         info('You can delete it to create new one')
         raise
@@ -184,6 +191,7 @@ def read_config(config_path):
         raise
     return Config(
         port_name='COM%d' % port_number,
+        use_studio=use_studio,
     )
 
 
@@ -241,7 +249,7 @@ def run():
                     )
                 )
                 continue
-            resend(incoming_values, serial_port)
+            resend(incoming_values, serial_port, config.use_studio)
 
         now = time()
         if now > next_start:
