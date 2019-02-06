@@ -1,4 +1,4 @@
-from ConfigParser import ConfigParser, NoSectionError, NoOptionError
+from configparser import ConfigParser, NoSectionError, NoOptionError
 from collections import namedtuple
 from hid import device
 from locale import setlocale, LC_ALL
@@ -93,16 +93,15 @@ previous_state = None
 def parse(data):
     global previous_state
 
-    packet = ''.join(chr(value) for value in data)
-    structure = unpack(RESPONSE_FORMAT, packet)
+    structure = unpack(RESPONSE_FORMAT, bytes(data))
     response_format = ResponseFormat(*structure)
 
     if response_format.prefix != RESPONSE_PREFIX:
         warning('Unknown prefix: %08X' % response_format.prefix)
     if response_format.error_notice:
         warning('Error notice: %08X' % response_format.error_notice)
-    if any(char != '\0' for char in response_format.zeros):
-        hexes = ''.join('%02X' % ord(char) for char in response_format.zeros)
+    if any(response_format.zeros):
+        hexes = ''.join('%02X' % value for value in response_format.zeros)
         warning('Non zero value in the tail: %s' % hexes)
 
     if previous_state != response_format.state:
@@ -143,7 +142,8 @@ def serialize(open_format, use_studio):
             value.replace('.', ',')
             for value in values
         ]
-    return '$%s\r\n' % ';'.join(values)
+    string = '$%s\r\n' % ';'.join(values)
+    return bytes(string, encoding='ascii')
 
 
 def resend(incoming_values, serial_port, use_studio):
@@ -169,7 +169,7 @@ def create_dummy_config(config_path):
     config.add_section(SERIAL_SECTION)
     config.set(SERIAL_SECTION, PORT_NUMBER, '')
     config.add_section(LOG_VIEW_SECTION)
-    config.set(LOG_VIEW_SECTION, USE_STUDIO, False)
+    config.set(LOG_VIEW_SECTION, USE_STUDIO, 'false')
     with open(config_path, 'w') as output:
         config.write(output)
 
