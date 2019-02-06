@@ -164,7 +164,7 @@ def create_dummy_config(config_path):
         config.write(output)
 
 
-def get_port_number(config_path):
+def read_config(config_path):
     config = ConfigParser()
     config.read(config_path)
     try:
@@ -183,11 +183,11 @@ def get_port_number(config_path):
     )
 
 
-def get_port_name():
+def get_config():
     path = get_config_path()
     if not exists(path):
         create_dummy_config(path)
-    return get_port_number(path)
+    return read_config(path)
 
 
 def setup_logger():
@@ -207,7 +207,7 @@ def setup_logger():
 def run():
     setup_logger()
 
-    config = get_port_name()
+    config = get_config()
     hid_device = None
     serial_port = Serial(config.port_name)
 
