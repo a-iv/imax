@@ -6,7 +6,7 @@ from logging import getLogger, INFO, StreamHandler, Formatter, warning, info, er
 from os.path import splitext, abspath, exists
 from serial import Serial
 from struct import unpack
-from sys import stdout
+from sys import stdout, argv
 from time import sleep, time
 
 
@@ -160,7 +160,8 @@ def get_hid_device():
 
 
 def get_config_path():
-    name, _ext = splitext(abspath(__file__))
+    script_name = argv[0]
+    name, _ext = splitext(abspath(script_name))
     return '%s.ini' % name
 
 
